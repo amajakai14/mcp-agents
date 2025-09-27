@@ -2,7 +2,7 @@
 
 import signal
 import sys
-from fastmcp.server import FastMCP
+from fastmcp import FastMCP
 from typing import Dict, List
 
 # Create the FastMCP instance
@@ -60,7 +60,7 @@ AGENT_PROFILES = {
             "Monitor product metrics and KPIs"
         ],
         "limitations": [
-            "cannot write or modify code",
+            "Cannot write or modify code",
             "Cannot make final budget decisions",
             "Must validate requirements with stakeholders",
             "Should consider technical constraints from development team",
