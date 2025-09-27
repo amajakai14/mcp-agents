@@ -4,7 +4,7 @@ build:
 
 # Run the FastMCP server
 run:
-    uv run fastmcp
+    uv run agents
 
 # Run tests
 test:

@@ -1,11 +1,10 @@
-# MCP Agents - Simple Math Tools
+# MCP Agents - Example FastMCP Server
 
-A simple Model Context Protocol (MCP) server that provides basic mathematical operations as tools.
+A simple Model Context Protocol (MCP) server built with FastMCP that demonstrates basic tool implementation.
 
 ## Features
 
-- **add**: Add two numbers together
-- **minus**: Subtract the second number from the first number
+- **greet**: Greet a user by name
 
 ## Installation
 
@@ -40,19 +39,72 @@ just run
 
 ### Using with MCP Clients
 
-You can use this server with any MCP-compatible client. Here's an example configuration for `mcp_config.json`:
+You can use this server with any MCP-compatible client. The configuration depends on how you want to run the server:
+
+#### Option 1: Local Development (using source code)
+
+For development or when running from a local clone:
 
 ```json
 {
   "mcpServers": {
-    "agents": {
+    "mcp-agents": {
       "command": "uv",
       "args": ["run", "mcp-agents"],
-      "cwd": "/path/to/mcp-agents"
+      "cwd": "/Users/means/repository/mcp-agents",
+      "env": {}
     }
   }
 }
 ```
+
+#### Option 2: PyPI Installation (recommended for end users)
+
+Once published to PyPI, users can use this simpler configuration:
+
+```json
+{
+  "mcpServers": {
+    "mcp-agents": {
+      "command": "uvx",
+      "args": ["amajakai14_mcp-agents"]
+    }
+  }
+}
+```
+
+Alternative with `pipx`:
+```json
+{
+  "mcpServers": {
+    "mcp-agents": {
+      "command": "pipx",
+      "args": ["run", "amajakai14_mcp-agents"]
+    }
+  }
+}
+```
+
+#### Option 3: Version Pinning
+
+To pin to a specific version:
+
+```json
+{
+  "mcpServers": {
+    "mcp-agents": {
+      "command": "uvx",
+      "args": ["amajakai14_mcp-agents==0.1.0"]
+    }
+  }
+}
+```
+
+#### For Claude Desktop
+
+Add any of the above configurations to your Claude Desktop config file:
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
 
 ### Testing the Tools
 
@@ -64,40 +116,28 @@ just test
 
 ## Available Tools
 
-### add
-Adds two numbers together.
+### greet
+Greets a user by name.
 
 **Parameters:**
-- `a` (number): First number
-- `b` (number): Second number
+- `name` (string): The name of the person to greet
+
+**Returns:**
+A friendly greeting message.
 
 **Example:**
 ```json
 {
-  "name": "add",
+  "name": "greet",
   "arguments": {
-    "a": 10,
-    "b": 5
+    "name": "Alice"
   }
 }
 ```
 
-### minus
-Subtracts the second number from the first number.
-
-**Parameters:**
-- `a` (number): Number to subtract from
-- `b` (number): Number to subtract
-
-**Example:**
-```json
-{
-  "name": "minus",
-  "arguments": {
-    "a": 10,
-    "b": 3
-  }
-}
+**Response:**
+```
+"Hello, Alice!"
 ```
 
 ## Development
@@ -130,11 +170,17 @@ mcp-agents/
 
 ### Adding New Tools
 
-To add new tools:
+To add new tools using FastMCP:
 
-1. Add the tool definition to the `handle_list_tools()` function
-2. Add the tool implementation to the `handle_call_tool()` function
-3. Update the README with documentation for the new tool
+1. Add a new function with the `@mcp.tool()` decorator:
+   ```python
+   @mcp.tool("tool_name", description="Description of what the tool does")
+   def tool_name(param1: type, param2: type) -> return_type:
+       # Tool implementation
+       return result
+   ```
+
+2. Update the README with documentation for the new tool
 
 ### Running Tests
 
