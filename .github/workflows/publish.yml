@@ -23,4 +23,7 @@ jobs:
         run: uv build
 
       - name: Publish to PyPi
+        with:
+          user: amajakai14
+          password: ${{ secrets.PYPI_API_TOKEN }}
         run: uv publish -v dist/*
