@@ -4,9 +4,14 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+  id-token: write  # For trusted publishing (optional but recommended)
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Removed environment since PyPI is configured for "Any" environment
     
     steps:
     - uses: actions/checkout@v4
@@ -26,6 +31,4 @@ jobs:
     
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+      # No credentials needed - using trusted publishing!
