@@ -1,7 +1,5 @@
 """Example MCP server using FastMCP."""
 
-import signal
-import sys
 from fastmcp import FastMCP
 from typing import Dict, List
 
@@ -107,36 +105,9 @@ def list_all_agents() -> List[Dict]:
     ]
 
 
-def setup_signal_handlers():
-    """Setup graceful shutdown signal handlers."""
-
-    def signal_handler(signum, frame):
-        print(f"\n🛑 Received signal {signum}. Shutting down gracefully...")
-        sys.exit(0)
-
-    # Handle common termination signals
-    signal.signal(signal.SIGINT, signal_handler)  # Ctrl+C
-    signal.signal(signal.SIGTERM, signal_handler)  # Termination signal
-
-    # On Unix systems, also handle SIGHUP
-    if hasattr(signal, "SIGHUP"):
-        signal.signal(signal.SIGHUP, signal_handler)
-
-
 def main():
-    """Main function with graceful shutdown support."""
-    setup_signal_handlers()
-
-    try:
-        print("🚀 Starting MCP server...")
-        mcp.run()
-    except KeyboardInterrupt:
-        print("\n🛑 Received keyboard interrupt. Shutting down gracefully...")
-    except Exception as e:
-        print(f"❌ Server error: {e}")
-        sys.exit(1)
-    finally:
-        print("👋 Server shutdown complete.")
+    print("🚀 Starting MCP server...")
+    mcp.run()
 
 
 # This allows the server to be run directly too
