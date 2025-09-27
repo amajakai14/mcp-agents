@@ -1,4 +1,4 @@
-name: Publish FastMCP to PyPI
+name: Publish MCP Agents to PyPI
 on:
   release:
     types: [published]

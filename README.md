@@ -1,4 +1,4 @@
-# FastMCP - Simple Math Tools
+# MCP Agents - Simple Math Tools
 
 A simple Model Context Protocol (MCP) server that provides basic mathematical operations as tools.
 
@@ -32,7 +32,7 @@ just build
 
 ### Running the MCP Server
 
-To start the FastMCP server:
+To start the MCP agents server:
 
 ```bash
 just run
@@ -45,9 +45,9 @@ You can use this server with any MCP-compatible client. Here's an example config
 ```json
 {
   "mcpServers": {
-    "fastmcp": {
+    "agents": {
       "command": "uv",
-      "args": ["run", "fastmcp"],
+      "args": ["run", "mcp-agents"],
       "cwd": "/path/to/mcp-agents"
     }
   }
@@ -105,7 +105,7 @@ Subtracts the second number from the first number.
 ### Available Just Commands
 
 - `just build` - Install dependencies and sync the project
-- `just run` - Start the FastMCP server
+- `just run` - Start the MCP agents server
 - `just test` - Run the test script
 - `just format` - Format code with black and isort
 - `just typecheck` - Run type checking with mypy
@@ -119,7 +119,7 @@ Subtracts the second number from the first number.
 ```
 mcp-agents/
 ├── src/
-│   └── fastmcp/
+│   └── agents/
 │       └── __init__.py          # Main MCP server implementation
 ├── pyproject.toml               # Project configuration and dependencies
 ├── justfile                     # Task runner configuration
