@@ -3,7 +3,7 @@ requires = ["hatchling", "uv-dynamic-versioning>=0.7.0"]
 build-backend = "hatchling.build"
 
 [project]
-name = "mcp-agents"
+name = "amajakai14_mcp-agents"
 version = "0.1.0"
 description = "A simple FastMCP project with basic math tools"
 authors = [
