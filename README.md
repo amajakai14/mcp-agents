@@ -1,6 +1,19 @@
-# MCP Agents
+# MCP Agents 🚀
 
-A collection of Model Context Protocol (MCP) servers built with FastMCP, demonstrating how to create tools, resources, and prompts that LLMs can use.
+FastMCP-based Model Context Protocol servers providing various tools, resources, and prompts for AI assistants.
+
+## Quick Start with uvx
+
+The easiest way to run these MCP servers is using `uvx` (recommended):
+
+```bash
+# Run the default basic server
+uvx @amajakai14/mcp-agents
+
+# Or run specific servers
+uvx @amajakai14/mcp-agents --script mcp-basic-server
+uvx @amajakai14/mcp-agents --script mcp-advanced-server
+```
 
 ## What is MCP?
 
@@ -10,15 +23,61 @@ The Model Context Protocol (MCP) is a standardized way to connect LLMs to tools 
 - **Resources**: Data that can be loaded into LLM context 
 - **Prompts**: Reusable templates for LLM interactions
 
-## Getting Started
+## Installation Options
 
-### Installation
-
+### Option 1: Using uvx (Recommended)
 ```bash
-pip install -r requirements.txt
+# Install uvx if you haven't already
+pip install uvx
+
+# Run the default server
+uvx @amajakai14/mcp-agents
+
+# Or run specific servers
+uvx @amajakai14/mcp-agents --script mcp-basic-server
+uvx @amajakai14/mcp-agents --script mcp-advanced-server
+```
+
+### Option 2: Clone and Run Locally
+```bash
+# Clone the repository
+git clone https://github.com/amajakai14/mcp-agents.git
+cd mcp-agents
+
+# Install dependencies
+pip3 install -r requirements.txt
+
+# Run the servers
+python3 basic_mcp_server.py
+python3 advanced_mcp_server.py
+```
+
+### Option 3: Install from PyPI (Future)
+```bash
+pip install mcp-agents
+mcp-agents  # Run default server
+mcp-basic-server    # Run basic server
+mcp-advanced-server # Run advanced server
 ```
 
 ### Running the Servers
+
+## Publishing to PyPI
+
+To publish this package to PyPI so users can use `uvx @amajakai14/mcp-agents`:
+
+1. **Build the package:**
+   ```bash
+   pip install build twine
+   python -m build
+   ```
+
+2. **Upload to PyPI:**
+   ```bash
+   twine upload dist/*
+   ```
+
+3. **Or use GitHub Actions:** Create a release on GitHub and the workflow will automatically publish to PyPI.
 
 ## Testing Your MCP Server
 
@@ -73,6 +132,39 @@ A comprehensive server showing tools, resources, and prompts:
 
 Add this to your Claude Desktop configuration:
 
+### Claude Desktop
+
+Add this to your Claude Desktop configuration:
+
+**Simple Configuration (Default - Basic Server):**
+```json
+{
+  "mcpServers": {
+    "mcp-agents": {
+      "command": "uvx",
+      "args": ["@amajakai14/mcp-agents"]
+    }
+  }
+}
+```
+
+**Multiple Servers Configuration:**
+```json
+{
+  "mcpServers": {
+    "mcp-basic": {
+      "command": "uvx",
+      "args": ["@amajakai14/mcp-agents", "--script", "mcp-basic-server"]
+    },
+    "mcp-advanced": {
+      "command": "uvx", 
+      "args": ["@amajakai14/mcp-agents", "--script", "mcp-advanced-server"]
+    }
+  }
+}
+```
+
+**For local installation:**
 ```json
 {
   "mcpServers": {

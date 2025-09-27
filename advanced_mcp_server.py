@@ -211,7 +211,8 @@ Please suggest:
 3. Any tasks that could be combined or broken down
 4. Recommended order of execution"""
 
-if __name__ == "__main__":
+def main():
+    """Main entry point for the advanced MCP server."""
     print("Starting Advanced MCP Server...")
     print("\nAvailable Tools:")
     print("- add_note: Add a new note")
@@ -230,3 +231,6 @@ if __name__ == "__main__":
     print("- task_prioritizer: Generate task prioritization prompt")
     
     mcp.run()
+
+if __name__ == "__main__":
+    main()

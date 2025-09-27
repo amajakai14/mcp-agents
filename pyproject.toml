@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-agents"
+version = "1.0.0"
+description = "FastMCP-based Model Context Protocol servers with various tools"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+keywords = ["mcp", "model-context-protocol", "fastmcp", "ai", "tools"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "fastmcp>=2.12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "black",
+    "isort",
+    "mypy",
+]
+
+[project.scripts]
+mcp-agents = "basic_mcp_server:main"
+mcp-basic-server = "basic_mcp_server:main"
+mcp-advanced-server = "advanced_mcp_server:main"
+
+[project.urls]
+Homepage = "https://github.com/amajakai14/mcp-agents"
+Repository = "https://github.com/amajakai14/mcp-agents"
+Issues = "https://github.com/amajakai14/mcp-agents/issues"
+Documentation = "https://github.com/amajakai14/mcp-agents#readme"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*.py"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.isort]
+profile = "black"
+line_length = 88

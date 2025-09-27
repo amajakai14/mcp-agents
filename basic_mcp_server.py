@@ -85,16 +85,26 @@ def word_count(text: str) -> dict:
     }
 
 if __name__ == "__main__":
-    # Run the MCP server
+    def main():
+    """Main entry point for the MCP server."""
     print("Starting Basic MCP Tools Server...")
     print("Available tools:")
-    print("- add_numbers: Add two numbers")
-    print("- multiply_numbers: Multiply two numbers") 
-    print("- get_current_time: Get current timestamp")
-    print("- create_file_content: Create a file with content")
-    print("- list_files_in_directory: List files in a directory")
-    print("- calculate_factorial: Calculate factorial of a number")
-    print("- format_json: Format JSON with proper indentation")
-    print("- word_count: Count words, characters, and lines")
+    for tool_name, tool_func in [
+        ("add_numbers", add_numbers),
+        ("multiply_numbers", multiply_numbers), 
+        ("get_current_time", get_current_time),
+        ("create_file_content", create_file_content),
+        ("list_files_in_directory", list_files_in_directory),
+        ("calculate_factorial", calculate_factorial),
+        ("format_json", format_json),
+        ("word_count", word_count)
+    ]:
+        doc = tool_func.__doc__ or "No description"
+        print(f"- {tool_name}: {doc.strip()}")
+    print()
     
-    mcp.run()
+    app.run()
+
+# Run the server
+if __name__ == "__main__":
+    main()
