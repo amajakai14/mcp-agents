@@ -2,6 +2,10 @@
 
 A simple Model Context Protocol (MCP) server built with FastMCP that demonstrates basic tool implementation.
 
+<a href="https://glama.ai/mcp/servers/@amajakai14/mcp-agents">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@amajakai14/mcp-agents/badge" alt="Agents MCP server" />
+</a>
+
 ## Features
 
 - **greet**: Greet a user by name
